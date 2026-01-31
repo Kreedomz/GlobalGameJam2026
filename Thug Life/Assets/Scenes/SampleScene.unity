@@ -1024,18 +1024,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4315915907898398681, guid: aef5748aba4c8ae4fb725a70963ecd34, type: 3}
-      propertyPath: wanderRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4315915907898398681, guid: aef5748aba4c8ae4fb725a70963ecd34, type: 3}
-      propertyPath: timeBetweenRobbings
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4315915907898398681, guid: aef5748aba4c8ae4fb725a70963ecd34, type: 3}
-      propertyPath: timeBeforeNextWander
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4457931502514940395, guid: aef5748aba4c8ae4fb725a70963ecd34, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.35

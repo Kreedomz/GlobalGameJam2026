@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -19,7 +20,7 @@ public class Player : MonoBehaviour
 
     [Header("Reputation Reward Settings")]
     int playerReputation = 0;
-    [SerializeField] int reputationGainPerRob = 100;
+    [SerializeField] int reputationReward = 100; // The amount to gain when successfully robbing a civilian and how much to lose if you get spotted
     void Start()
     {
         
@@ -78,7 +79,12 @@ public class Player : MonoBehaviour
 
     public void AddReputation()
     {
-        playerReputation += reputationGainPerRob;
+        playerReputation += reputationReward;
+    }
+
+    public void LoseReputation()
+    {
+        playerReputation -= reputationReward;
     }
 
     public void AddReputation(int reputationToAdd)
@@ -86,7 +92,7 @@ public class Player : MonoBehaviour
         playerReputation += reputationToAdd;
     }
     
-    public void NegateReputation(int reputationToNegate)
+    public void LoseReputation(int reputationToNegate)
     {
         playerReputation -= reputationToNegate;
     }
