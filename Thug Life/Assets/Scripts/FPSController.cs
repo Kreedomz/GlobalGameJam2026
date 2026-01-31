@@ -18,13 +18,16 @@ public class FPSController : MonoBehaviour
     float verticalVelocity;
     float pitch;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     void Awake()
     {
         cc = GetComponent<CharacterController>();
         if (cameraTransform == null)
             cameraTransform = Camera.main != null ? Camera.main.transform : null;
 
-        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
