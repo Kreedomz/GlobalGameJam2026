@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69745c1bd2112404bb5eb5bf1c14703a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 330585546}
   moveSpeed: 5
   gravity: -9.81
   mouseSensitivity: 2
@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robbingDistance: 2.5
   robbingKey: 101
+  maskKey: 103
   reputationGainPerRob: 100
 --- !u!1001 &324595496
 PrefabInstance:
