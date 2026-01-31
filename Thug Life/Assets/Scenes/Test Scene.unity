@@ -573,7 +573,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -137.26198, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1250,7 +1250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 1334, y: -918}
+  m_AnchoredPosition: {x: 1334, y: -930}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1596440232
@@ -1540,6 +1540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1912137620}
+  - component: {fileID: 1912137621}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1570,6 +1571,27 @@ RectTransform:
   m_AnchoredPosition: {x: -651, y: 487}
   m_SizeDelta: {x: -1728, y: -1034}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1912137621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912137619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c334bf32de18d4b3f97fe653b55211b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repFill: {fileID: 254069467}
+  rep01: 1
+  moneyText: {fileID: 774907766}
+  money: 0
+  moneyGoal: 300
+  maskText: {fileID: 1596440232}
+  maskOn: 0
+  seenTextObject: {fileID: 1069348773}
+  seenFlashSeconds: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
