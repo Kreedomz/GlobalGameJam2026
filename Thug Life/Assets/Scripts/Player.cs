@@ -18,12 +18,19 @@ public class Player : MonoBehaviour
     [SerializeField] KeyCode maskKey = KeyCode.G; // The key players will use to put on and take off their mask
     public MaskState maskState { get; private set; } = MaskState.Off;
 
-    [Header("Reputation Reward Settings")]
-    int playerReputation = 0;
-    [SerializeField] int reputationReward = 100; // The amount to gain when successfully robbing a civilian and how much to lose if you get spotted
+    [Header("Player Reward Settings")]
+    public int playerReputation { get; private set; } = 0;
+    [SerializeField] int reputationReward = 150; // The amount to gain when successfully robbing a civilian and how much to lose if you get spotted
+    [SerializeField] int maximumReputation = 1000; // The maximum amount of reputation a player can have
+    public int playerMoney { get; private set; } = 0;
+    [Range(1.0f, 50.0f)]
+    [SerializeField] int moneyRewardMin = 50; // The minimum amount of money the player can get from robbing a civilian
+    [Range(51.0f, 150.0f)]
+    [SerializeField] int moneyRewardMax = 150; // The maximum amount of money the player can get from robbing a civilian
+
     void Start()
     {
-        
+        playerReputation = maximumReputation / 2; // Set the player reputation to 50% of the max
     }
 
     // Update is called once per frame
@@ -82,6 +89,11 @@ public class Player : MonoBehaviour
         playerReputation += reputationReward;
     }
 
+    public void AddMoney()
+    { 
+        int randomMoneyReward = Random.Range(Mathf.Abs(moneyRewardMin), Mathf.Abs(moneyRewardMax));
+        playerMoney += randomMoneyReward;
+    }
     public void LoseReputation()
     {
         playerReputation -= reputationReward;
@@ -97,4 +109,13 @@ public class Player : MonoBehaviour
         playerReputation -= reputationToNegate;
     }
 
+    public int GetPlayerReputation()
+    {
+        return playerReputation;
+    }
+
+    public int GetPlayerMaxReputation()
+    {
+        return maximumReputation;
+    }
 }

@@ -148,9 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6875c1766606540a72bcdf537f2dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 3.5
   wanderRange: 10
   timeBeforeNextWander: 2
   timeBetweenRobbings: 5
+  timeSpottedToLoseRep: 2
   visionAngle: 90
   detectionRange: 10
 --- !u!108 &4982745441452837790
@@ -164,7 +166,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 50000
+  m_Intensity: 25000
   m_Range: 10
   m_SpotAngle: 90
   m_InnerSpotAngle: 30.7044
