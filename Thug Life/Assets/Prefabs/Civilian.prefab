@@ -146,5 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6875c1766606540a72bcdf537f2dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRange: 5
-  timeBeforeNextWander: 1
+  wanderRange: 10
+  timeBeforeNextWander: 2
+  timeBetweenRobbings: 5

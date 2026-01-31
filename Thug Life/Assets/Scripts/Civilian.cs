@@ -3,6 +3,12 @@ using UnityEngine.AI;
 
 public class Civilian : MonoBehaviour
 {
+    public enum RobState
+    {
+        None,
+        Robbed
+    }
+
     [Header("Civilian Settings")]
     [SerializeField] float wanderRange = 5.0f; // The range the AI will wander around based on their start location
     [SerializeField] float timeBeforeNextWander = 5.0f; // The wait time in second before AI starting to wander again
@@ -12,6 +18,11 @@ public class Civilian : MonoBehaviour
 
     Vector3 startLocation = Vector3.zero; // The location where the AI will be wandering around
     Vector3 targetLocation = Vector3.zero; // The location where the AI is supposed to walking towards
+
+    [Header("Robbing Settings")]
+    [SerializeField] float timeBetweenRobbings = 20.0f; // The amount of time in seconds before the civilian can be robbed again
+    float elapsedTimeSinceLastRob = 0.0f;
+    public RobState robState { get; private set; } = RobState.None; // Determines whether or on the civilian can be robbed
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +41,21 @@ public class Civilian : MonoBehaviour
     void Update()
     {
         HandleCivilianWandering();
+        HandleRobbingState();
+    }
+
+    void HandleRobbingState()
+    {
+        if (robState == RobState.Robbed)
+        {
+            elapsedTimeSinceLastRob += Time.deltaTime;
+
+            if (elapsedTimeSinceLastRob >= timeBetweenRobbings)
+            {
+                robState = RobState.None;
+                elapsedTimeSinceLastRob = 0.0f;
+            }
+        }
     }
 
     void HandleCivilianWandering()
@@ -66,5 +92,18 @@ public class Civilian : MonoBehaviour
             return newPositionVector;
         }
         return Vector3.zero;
+    }
+
+    public void RobCivilian()
+    {
+        if (robState == RobState.Robbed) { return; } // Ignore a robbed civilian
+
+        // If a player is found, give a reward
+        Player player = FindFirstObjectByType<Player>();
+        if (player != null)
+        {
+            player.AddReputation(); // Add reputation for a successfull civilian rob
+            robState = RobState.Robbed;
+        }
     }
 }
