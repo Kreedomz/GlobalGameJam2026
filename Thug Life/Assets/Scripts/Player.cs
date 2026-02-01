@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerReputation = maximumReputation / 2; // Set the player reputation to 50% of the max
+        ToggleCivilianLights(false); // Hide the lights of the civilians at the beginning since player won't have mask on
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
     {
         ToggleMask();
         HandleRobbing();
+        HandleRobbingUI();
     }
 
     void HandleRobbing()
@@ -59,6 +61,44 @@ public class Player : MonoBehaviour
                     civilian.RobCivilian(); // Try to rob the civilian if they are "robbable"
                     break; // Make sure we only rob one civilian at a time and ignore continuing the for loop
                 }
+            }
+        }
+    }
+
+    void HandleRobbingUI()
+    {
+        // Grab all the civilians in the game
+        Civilian[] civilians = FindObjectsByType<Civilian>(FindObjectsSortMode.None);
+        HUDController HUDController = FindFirstObjectByType<HUDController>();
+
+        if (HUDController != null)
+        {
+            int civilianInRange = 0;
+            // Loop through all civilians in the game
+            foreach (Civilian civilian in civilians)
+            {
+                if (civilian != null)
+                {
+                    float distanceToPlayer = Vector3.Distance(transform.position, civilian.transform.position);
+                    if (distanceToPlayer <= robbingDistance)
+                    {
+                        civilianInRange++;
+                    }
+                }
+            }
+
+            if (civilianInRange > 0)
+            {
+                if (maskState == MaskState.On)
+                {
+                    // Enable the robbing UI
+                    HUDController.ToggleRobUI(true);
+                }
+            }
+            else
+            {
+                // Disable the robbing UI
+                HUDController.ToggleRobUI(false);
             }
         }
     }

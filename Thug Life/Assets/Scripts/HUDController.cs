@@ -15,8 +15,10 @@ public class HUDController : MonoBehaviour
     public int moneyGoal = 300;
 
     [Header("Mask UI")]
-    public TMP_Text maskText;
-    public bool maskOn = false;
+    [SerializeField] TMP_Text maskText;
+
+    [Header("RobUI")]
+    [SerializeField] TMP_Text robText;
 
     [Header("Seen UI")]
     public GameObject seenTextObject; // SeenText 
@@ -48,12 +50,6 @@ public class HUDController : MonoBehaviour
     {
         money = Mathf.Max(0, money + amount);
         ApplyMoney();
-    }
-
-    public void SetMask(bool on)
-    {
-        maskOn = on;
-        ApplyMask();
     }
 
     public void FlashSeen()
@@ -101,5 +97,22 @@ public class HUDController : MonoBehaviour
         Player player = FindAnyObjectByType<Player>();
         if (maskText != null && player != null)
             maskText.text = (player.maskState == Player.MaskState.On ? "MASK: ON" : "MASK: OFF");
+    }
+
+    public void ToggleRobUI(bool toggle)
+    {
+        Player player = FindAnyObjectByType<Player>();
+        if (player != null)
+        {
+            if (toggle)
+            {
+                robText.gameObject.SetActive(true);
+
+            }
+            else
+            {
+                robText.gameObject.SetActive(false);
+            }
+        }
     }
 }

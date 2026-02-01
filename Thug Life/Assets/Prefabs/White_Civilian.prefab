@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4084623575733339209}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.4, z: 0}
   m_LocalScale: {x: 0.006227183, y: 0.009118656, z: 0.006227183}
   m_ConstrainProportionsScale: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   movementSpeed: 3.5
   wanderRange: 5
   timeBeforeNextWander: 5
-  timeBetweenRobbings: 20
+  timeBetweenRobbings: 5
   timeSpottedToLoseRep: 5
   visionAngle: 90
   detectionRange: 10
