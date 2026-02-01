@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        ApplyUI();
+        //ApplyUI();
         LockCursor();
     }
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         {
             _ended = true;
             if (endUI != null)
-                endUI.ShowWin(money, moneyGoal);
+                endUI.ShowWin(money);
         }
     }
 
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         {
             _ended = true;
             if (endUI != null)
-                endUI.ShowLose(money, moneyGoal);
+                endUI.ShowLose(money);
         }
     }
 

@@ -39,6 +39,8 @@ public class FPSController : MonoBehaviour
 
     void Look()
     {
+        if (Time.timeScale <= 0.0f) { return; } // Ignore the mouse movements if the game is frozen
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
