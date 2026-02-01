@@ -28,10 +28,21 @@ public class Player : MonoBehaviour
     [Range(51.0f, 150.0f)]
     [SerializeField] int moneyRewardMax = 150; // The maximum amount of money the player can get from robbing a civilian
 
+    [Header("Audio")]
+    [SerializeField] AudioClip Zip01;   // your mask sound
+    [SerializeField] float maskSfxVolume = 1f;
+
+    [SerializeField]
+    AudioSource maskSFXSource;
+
+
     void Start()
     {
         playerReputation = maximumReputation / 2; // Set the player reputation to 50% of the max
         ToggleCivilianLights(false); // Hide the lights of the civilians at the beginning since player won't have mask on
+
+        playerReputation = maximumReputation / 2;
+        ToggleCivilianLights(false);
     }
 
     // Update is called once per frame
@@ -121,9 +132,16 @@ public class Player : MonoBehaviour
                 maskState = MaskState.Off;
                 ToggleCivilianLights(false);
             }
-
+            PlayMaskSound();
         }
     }
+
+    void PlayMaskSound()
+    {
+        if (Zip01 == null && maskSFXSource == null) return;
+        maskSFXSource.PlayOneShot(Zip01, maskSfxVolume);
+    }
+
 
     void ToggleCivilianLights(bool toggle)
     {

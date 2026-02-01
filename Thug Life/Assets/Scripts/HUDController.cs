@@ -111,7 +111,7 @@ public class HUDController : MonoBehaviour
             }
             else
             {
-                robText.gameObject.SetActive(false);
+                //robText.gameObject.SetActive(false);
             }
         }
     }
