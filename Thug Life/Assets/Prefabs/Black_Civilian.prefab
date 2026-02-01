@@ -199,7 +199,7 @@ MonoBehaviour:
   movementSpeed: 3.5
   wanderRange: 5
   timeBeforeNextWander: 5
-  timeBetweenRobbings: 20
+  timeBetweenRobbings: 5
   timeSpottedToLoseRep: 5
   visionAngle: 90
   detectionRange: 10

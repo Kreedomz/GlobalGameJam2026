@@ -22,9 +22,9 @@ public class Civilian : MonoBehaviour
     Vector3 targetLocation = Vector3.zero; // The location where the AI is supposed to walking towards
 
     [Header("Robbing Settings")]
-    [SerializeField] float timeBetweenRobbings = 20.0f; // The amount of time in seconds before the civilian can be robbed again
+    [SerializeField] float timeBetweenRobbings = 5.0f; // The amount of time in seconds before the civilian can be robbed again
     float elapsedTimeSinceLastRob = 0.0f;
-    [SerializeField] float timeSpottedToLoseRep = 5.0f; // The amount of time in seconds required for the civilian to spot the player and make him lose rep
+    [SerializeField] float timeSpottedToLoseRep = 2.0f; // The amount of time in seconds required for the civilian to spot the player and make him lose rep
     float timeWhileSpotted = 0.0f; // The amount in seconds that the player is being spotted by the current civilian
     public RobState robState { get; private set; } = RobState.None; // Determines whether or on the civilian can be robbed
 
