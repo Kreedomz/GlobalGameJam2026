@@ -86,6 +86,13 @@ public class Civilian : MonoBehaviour
                     // If the player is spotted for a long time, make them lose reputation
                     if (timeWhileSpotted >= timeSpottedToLoseRep)
                     {
+                        // Show seen UI
+                        HUDController HUDController = FindFirstObjectByType<HUDController>();
+                        if (HUDController != null)
+                        {
+                            HUDController.FlashSeen();
+                        }
+                        // Lose player rep
                         player.LoseReputation();
                         timeWhileSpotted = 0.0f;
                     }
@@ -168,6 +175,7 @@ public class Civilian : MonoBehaviour
         if (player != null)
         {
             player.AddReputation(); // Add reputation for a successfull civilian rob
+            player.AddMoney();
             robState = RobState.Robbed;
         }
     }

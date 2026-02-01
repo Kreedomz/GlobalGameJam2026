@@ -22,19 +22,20 @@ public class HUDController : MonoBehaviour
     public GameObject seenTextObject; // SeenText 
     public float seenFlashSeconds = 1.0f;
 
-    Coroutine _seenRoutine;
+    Coroutine _seenRoutine = null;
 
     void Start()
     {
-        ApplyAll();
+        
     }
 
     void Update() //testing
     {
-        if (Input.GetKeyDown(KeyCode.M)) SetMask(!maskOn);
-        if (Input.GetKeyDown(KeyCode.K)) SetReputation01(rep01 - 0.1f);
-        if (Input.GetKeyDown(KeyCode.L)) AddMoney(25);
-        if (Input.GetKeyDown(KeyCode.Space)) FlashSeen();
+        //if (Input.GetKeyDown(KeyCode.M)) SetMask(!maskOn);
+        //if (Input.GetKeyDown(KeyCode.K)) SetReputation01(rep01 - 0.1f);
+        //if (Input.GetKeyDown(KeyCode.L)) AddMoney(25);
+        //if (Input.GetKeyDown(KeyCode.Space)) FlashSeen();
+        ApplyAll();
     }
 
     public void SetReputation01(float value01)
@@ -79,25 +80,26 @@ public class HUDController : MonoBehaviour
 
     void ApplyRep()
     {
-        if (repFill != null) repFill.fillAmount = rep01;
-        // Change color based on rep
-        if (repFill != null)
+        Player player = FindFirstObjectByType<Player>();
+        if (repFill != null && player != null)
         {
-            if (rep01 > 0.6f) repFill.color = Color.green;
-            else if (rep01 > 0.3f) repFill.color = Color.yellow;
-            else repFill.color = Color.red;
+            float repFillAmount = (float)player.GetPlayerReputation() / (float)player.GetPlayerMaxReputation();
+            repFill.fillAmount = repFillAmount;
         }
+
     }
 
     void ApplyMoney()
     {
-        if (moneyText != null)
-            moneyText.text = $"${money} / ${moneyGoal}";
+        Player player = FindAnyObjectByType<Player>();
+        if (moneyText != null && player != null)
+            moneyText.text = $"${player.playerMoney}";
     }
 
     void ApplyMask()
     {
-        if (maskText != null)
-            maskText.text = maskOn ? "MASK: ON" : "MASK: OFF";
+        Player player = FindAnyObjectByType<Player>();
+        if (maskText != null && player != null)
+            maskText.text = (player.maskState == Player.MaskState.On ? "MASK: ON" : "MASK: OFF");
     }
 }
