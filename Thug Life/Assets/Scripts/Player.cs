@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Player : MonoBehaviour
 {
@@ -170,6 +171,16 @@ public class Player : MonoBehaviour
     public void AddReputation()
     {
         playerReputation += reputationReward;
+
+        // If player reached under 0 or 0 rep
+        if (playerReputation >= maximumReputation)
+        {
+            EndScreenUI endScreenUI = FindFirstObjectByType<EndScreenUI>();
+            if (endScreenUI != null)
+            {
+                endScreenUI.ShowWin(playerMoney);
+            }
+        }
     }
 
     public void AddMoney()
@@ -180,6 +191,16 @@ public class Player : MonoBehaviour
     public void LoseReputation()
     {
         playerReputation -= reputationReward;
+
+        // If player reached under 0 or 0 rep
+        if (playerReputation <= 0f)
+        {
+            EndScreenUI endScreenUI = FindFirstObjectByType<EndScreenUI>();
+            if (endScreenUI != null)
+            {
+                endScreenUI.ShowLose(playerMoney);
+            }
+        }
     }
 
     public void AddReputation(int reputationToAdd)

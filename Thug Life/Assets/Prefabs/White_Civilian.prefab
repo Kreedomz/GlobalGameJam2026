@@ -111,7 +111,7 @@ MonoBehaviour:
   wanderRange: 5
   timeBeforeNextWander: 5
   timeBetweenRobbings: 5
-  timeSpottedToLoseRep: 5
+  timeSpottedToLoseRep: 2
   visionAngle: 90
   detectionRange: 10
 --- !u!195 &1804885427260737053

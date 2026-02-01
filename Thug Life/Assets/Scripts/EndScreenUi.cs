@@ -17,9 +17,10 @@ public class EndScreenUI : MonoBehaviour
     void Start()
     {
         HideAll();
+
     }
 
-    public void ShowWin(int money, int goal)
+    public void ShowWin(int money)
     {
         if (_ended) return;
         _ended = true;
@@ -28,13 +29,13 @@ public class EndScreenUI : MonoBehaviour
         if (winPanel != null) winPanel.SetActive(true);
 
         if (winMoneyText != null)
-            winMoneyText.text = $"Money Collected: ${money} / ${goal}";
+            winMoneyText.text = $"Money Collected: ${money}";
 
         UnlockCursor();
         Time.timeScale = 0f; // pause game
     }
 
-    public void ShowLose(int money, int goal)
+    public void ShowLose(int money)
     {
         if (_ended) return;
         _ended = true;
@@ -43,7 +44,7 @@ public class EndScreenUI : MonoBehaviour
         if (losePanel != null) losePanel.SetActive(true);
 
         if (loseMoneyText != null)
-            loseMoneyText.text = $"Money Collected: ${money} / ${goal}";
+            loseMoneyText.text = $"Money Collected: ${money}";
 
         UnlockCursor();
         Time.timeScale = 0f; // pause game
