@@ -72,15 +72,40 @@ public class Player : MonoBehaviour
             {
                 // Put on
                 maskState = MaskState.On;
-                print("Player put on mask");
+                ToggleCivilianLights(true);
+               
             }
             else
             {
                 // Take off mask
                 maskState = MaskState.Off;
-                print("Player removed mask");
+                ToggleCivilianLights(false);
             }
 
+        }
+    }
+
+    void ToggleCivilianLights(bool toggle)
+    {
+        Civilian[] civilians = FindObjectsByType<Civilian>(FindObjectsSortMode.None);
+        foreach (Civilian civilian in civilians)
+        {
+            Light visionLight = civilian.GetComponent<Light>();
+
+            // If the vision light component is detected in the enemies
+            if (visionLight != null)
+            {
+                // If you want to turn the lights on
+                if (toggle)
+                {
+                    visionLight.enabled = true;
+                }
+                // Turn off the lights
+                else
+                {
+                    visionLight.enabled = false;
+                }
+            }
         }
     }
 
